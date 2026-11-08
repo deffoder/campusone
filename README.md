@@ -98,7 +98,7 @@ Ensure PostgreSQL 18 service (`postgresql-x64-18`) is running:
 ### 2. Run Backend
 ```powershell
 cd c:\Users\cvumj\OneDrive\Desktop\CampusOne
-.\backend\venv\Scripts\python.exe -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+.\backend\venv\Scripts\python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 Swagger UI available at: `http://localhost:8000/docs`
 

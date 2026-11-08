@@ -52,7 +52,7 @@ CampusOne is configured to connect to PostgreSQL 18 running on localhost.
 
 4. **Launch the FastAPI API Server**:
    ```powershell
-   .\backend\venv\Scripts\python.exe -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+   .\backend\venv\Scripts\python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
    ```
    API Documentation available at: [http://localhost:8000/docs](http://localhost:8000/docs)
 
