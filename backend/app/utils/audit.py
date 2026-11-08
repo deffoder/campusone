@@ -7,6 +7,17 @@ from backend.app.models.entities import AuditLog
 
 GENESIS_HASH = "0" * 64
 
+def canonical_timestamp(ts: datetime) -> str:
+    """
+    Normalizes any datetime to a canonical UTC ISO-8601 string.
+    """
+    if ts.tzinfo is not None:
+        utc_ts = ts.astimezone(timezone.utc)
+    else:
+        utc_ts = ts.replace(tzinfo=timezone.utc)
+    # Truncate to second or millisecond precision consistently
+    return utc_ts.strftime("%Y-%m-%dT%H:%M:%S") + "Z"
+
 def calculate_audit_hash(
     prev_hash: str,
     table_name: str,
@@ -20,7 +31,7 @@ def calculate_audit_hash(
     """
     Computes a cryptographic SHA-256 hash linked to the previous entry.
     """
-    ts_str = timestamp.isoformat()
+    ts_str = canonical_timestamp(timestamp)
     raw = f"{prev_hash}|{table_name}|{record_id}|{action}|{actor_id or 'SYSTEM'}|{old_values or ''}|{new_values or ''}|{ts_str}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
