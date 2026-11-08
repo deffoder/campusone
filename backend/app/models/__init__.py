@@ -1,4 +1,4 @@
-from backend.app.models.entities import (
+from app.models.entities import (
     User, UserRole, Department, Student, Faculty, Subject,
     Class, Enrollment, Timetable, AttendanceSession, AttendanceRecord,
     AttendanceStatus, CorrectionRequest, CorrectionStatus, EvidenceFile,

@@ -5,21 +5,21 @@ from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, status
 from sqlalchemy.orm import Session
-from backend.app.core.database import get_db
-from backend.app.core.config import settings
-from backend.app.core.security import create_qr_token
-from backend.app.models.entities import (
+from app.core.database import get_db
+from app.core.config import settings
+from app.core.security import create_qr_token
+from app.models.entities import (
     User, Student, Enrollment, Class, AttendanceRecord, AttendanceSession,
     CorrectionRequest, EvidenceFile, QRToken, AttendanceStatus, CorrectionStatus,
     Subject, UserRole
 )
-from backend.app.schemas.all_schemas import (
+from app.schemas.all_schemas import (
     StudentSummaryStats, SubjectAttendanceStat, AttendanceRecordResponse,
     CorrectionRequestResponse, QRTokenResponse
 )
-from backend.app.api.deps import require_student, get_current_user
-from backend.app.utils.qr import generate_qr_base64
-from backend.app.utils.audit import record_audit_log
+from app.api.deps import require_student, get_current_user
+from app.utils.qr import generate_qr_base64
+from app.utils.audit import record_audit_log
 
 router = APIRouter(prefix="/students", tags=["students"])
 

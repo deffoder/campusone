@@ -2,9 +2,9 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from backend.app.core.config import settings
-from backend.app.core.database import engine, Base
-from backend.app.api import auth, students, faculty, attendance, admin, analytics, notifications
+from app.core.config import settings
+from app.core.database import engine, Base
+from app.api import auth, students, faculty, attendance, admin, analytics, notifications
 
 # Ensure upload directory exists
 upload_dir = os.path.join(os.getcwd(), settings.UPLOAD_DIR)

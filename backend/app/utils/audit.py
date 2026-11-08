@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timezone
 from typing import Optional
 from sqlalchemy.orm import Session
-from backend.app.models.entities import AuditLog
+from app.models.entities import AuditLog
 
 GENESIS_HASH = "0" * 64
 

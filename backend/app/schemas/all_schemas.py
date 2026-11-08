@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List, Any
 from datetime import datetime, date, time
-from backend.app.models.entities import UserRole, AttendanceStatus, CorrectionStatus, ApprovalDecision, SessionMethod
+from app.models.entities import UserRole, AttendanceStatus, CorrectionStatus, ApprovalDecision, SessionMethod
 
 # --- Auth & User Schemas ---
 class TokenSchema(BaseModel):

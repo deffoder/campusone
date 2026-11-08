@@ -2,17 +2,17 @@ from datetime import datetime, timezone, date, time
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from backend.app.core.database import get_db
-from backend.app.core.security import decode_token
-from backend.app.models.entities import (
+from app.core.database import get_db
+from app.core.security import decode_token
+from app.models.entities import (
     User, AttendanceSession, AttendanceRecord, AttendanceStatus, SessionMethod,
     Class, Enrollment, Student, QRToken
 )
-from backend.app.schemas.all_schemas import (
+from app.schemas.all_schemas import (
     MarkAttendanceRequest, QRScanRequest, AttendanceSessionResponse, AttendanceRecordResponse
 )
-from backend.app.api.deps import require_faculty
-from backend.app.utils.audit import record_audit_log
+from app.api.deps import require_faculty
+from app.utils.audit import record_audit_log
 
 router = APIRouter(prefix="/attendance", tags=["attendance"])
 

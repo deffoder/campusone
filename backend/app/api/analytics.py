@@ -3,12 +3,12 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-from backend.app.core.database import get_db
-from backend.app.models.entities import (
+from app.core.database import get_db
+from app.models.entities import (
     User, Department, Student, AttendanceRecord, AttendanceSession,
     AttendanceStatus, Class, Subject
 )
-from backend.app.api.deps import require_any_authenticated, get_current_user
+from app.api.deps import require_any_authenticated, get_current_user
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 

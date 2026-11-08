@@ -2,17 +2,17 @@ from datetime import datetime, timezone, date
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from backend.app.core.database import get_db
-from backend.app.models.entities import (
+from app.core.database import get_db
+from app.models.entities import (
     User, Faculty, Class, Enrollment, Student, Timetable, CorrectionRequest,
     AttendanceRecord, AttendanceSession, Approval, ApprovalDecision, CorrectionStatus,
     AttendanceStatus, Notification
 )
-from backend.app.schemas.all_schemas import (
+from app.schemas.all_schemas import (
     ClassResponse, TimetableItem, CorrectionDecisionRequest
 )
-from backend.app.api.deps import require_faculty
-from backend.app.utils.audit import record_audit_log
+from app.api.deps import require_faculty
+from app.utils.audit import record_audit_log
 
 router = APIRouter(prefix="/faculty", tags=["faculty"])
 
