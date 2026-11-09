@@ -3,9 +3,9 @@ import os
 import unittest
 from fastapi.testclient import TestClient
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from backend.app.main import app
+from app.main import app
 
 client = TestClient(app)
 

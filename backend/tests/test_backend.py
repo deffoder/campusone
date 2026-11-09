@@ -3,16 +3,16 @@ import os
 import unittest
 from datetime import datetime, timezone
 
-# Add root directory to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+# Add backend directory to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from backend.app.core.database import SessionLocal, engine
-from backend.app.core.security import (
+from app.core.database import SessionLocal, engine
+from app.core.security import (
     verify_password, get_password_hash, create_access_token,
     create_qr_token, decode_token
 )
-from backend.app.models.entities import User, Student, Faculty, AttendanceRecord, CorrectionRequest
-from backend.app.utils.audit import calculate_audit_hash, verify_audit_chain, record_audit_log
+from app.models.entities import User, Student, Faculty, AttendanceRecord, CorrectionRequest
+from app.utils.audit import calculate_audit_hash, verify_audit_chain, record_audit_log
 
 class TestCampusOneBackend(unittest.TestCase):
     @classmethod
