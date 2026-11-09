@@ -52,8 +52,9 @@ export const Layout: React.FC = () => {
     }
 
     // Admin & HOD
+    const overviewLabel = user.role === "hod" ? "Department Overview" : "Overview";
     const links = [
-      { label: "Institution Overview", path: "/admin/dashboard", icon: LayoutDashboard },
+      { label: overviewLabel, path: "/admin/dashboard", icon: LayoutDashboard },
       { label: "Students", path: "/admin/students", icon: Users },
       { label: "Faculty", path: "/admin/faculty", icon: GraduationCap },
       { label: "Academic Structure", path: "/admin/academic", icon: Layers },

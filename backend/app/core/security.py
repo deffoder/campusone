@@ -35,7 +35,7 @@ def create_qr_token(student_id: int, student_reg: str, expires_delta: Optional[t
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.now(timezone.utc) + timedelta(minutes=settings.QR_TOKEN_EXPIRE_MINUTES)
+        expire = datetime.now(timezone.utc) + timedelta(seconds=settings.QR_TOKEN_EXPIRE_SECONDS)
     
     to_encode = {
         "exp": expire,

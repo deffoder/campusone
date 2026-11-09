@@ -53,9 +53,11 @@ export const AdminDashboard: React.FC = () => {
       <div className="bg-gradient-to-r from-campus-navy via-campus-dark to-campus-blue rounded-3xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
         <div>
           <span className="text-xs uppercase font-bold text-blue-200 tracking-wider">
-            Enterprise Campus Administration
+            {user?.role === "hod" ? "Department Management" : "Campus Administration"}
           </span>
-          <h2 className="text-2xl font-black mt-1">Institutional Overview</h2>
+          <h2 className="text-2xl font-black mt-1">
+            {user?.role === "hod" ? "Department Overview" : "Campus Overview"}
+          </h2>
           <p className="text-xs text-blue-100/90 mt-1">
             Logged in as <span className="font-semibold text-white">{user?.name}</span> ({user?.role?.toUpperCase()})
           </p>
@@ -79,7 +81,7 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {/* KPI Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Total Students */}
         <div className="bg-white p-5 rounded-2xl border border-campus-border shadow-sm flex items-center justify-between">
           <div>
@@ -101,18 +103,6 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center">
             <GraduationCap className="w-6 h-6" />
-          </div>
-        </div>
-
-        {/* Overall Attendance */}
-        <div className="bg-white p-5 rounded-2xl border border-campus-border shadow-sm flex items-center justify-between">
-          <div>
-            <span className="text-xs font-semibold text-campus-muted uppercase">Average Turnout</span>
-            <h3 className="text-3xl font-black text-emerald-600 mt-1">{stats?.overall_attendance_rate}%</h3>
-            <span className="text-[11px] font-medium text-campus-muted">Across all courses</span>
-          </div>
-          <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-            <CheckCircle2 className="w-6 h-6" />
           </div>
         </div>
 

@@ -82,7 +82,7 @@ export const Login: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 text-xs text-blue-100">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>30-Minute Dynamic QR Invalidation</span>
+              <span>10-Second Dynamic QR Rotation</span>
             </div>
           </div>
         </div>

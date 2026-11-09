@@ -44,7 +44,8 @@ export const StudentQR: React.FC = () => {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          fetchQR(); // auto refresh when expired
+          clearInterval(interval);
+          fetchQR(); // automatically fetch freshly rotated 10s token
           return 0;
         }
         return prev - 1;
@@ -105,11 +106,11 @@ export const StudentQR: React.FC = () => {
         <div className="mt-6 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-campus-light border border-campus-border rounded-full text-xs font-bold text-campus-navy">
             <Clock className="w-4 h-4 text-campus-blue animate-pulse" />
-            <span>Valid for: {formatTimer(timeLeft)}</span>
+            <span>Valid for: {timeLeft}s</span>
           </div>
 
           <p className="text-[11px] text-campus-muted mt-2">
-            Tokens automatically rotate every 30 minutes to prevent unauthorized sharing.
+            Tokens automatically rotate every 10 seconds to prevent unauthorized sharing.
           </p>
 
           <button

@@ -174,7 +174,7 @@ def get_student_qr_token(
         token_str = active_token_record.token
         expires_at = active_token_record.expires_at
     else:
-        expires_delta = timedelta(minutes=settings.QR_TOKEN_EXPIRE_MINUTES)
+        expires_delta = timedelta(seconds=settings.QR_TOKEN_EXPIRE_SECONDS)
         expires_at = now + expires_delta
         token_str = create_qr_token(student_id=student.id, student_reg=student.reg_number, expires_delta=expires_delta)
         
@@ -195,7 +195,7 @@ def get_student_qr_token(
         "student_name": student.name,
         "reg_number": student.reg_number,
         "qr_base64": qr_base64,
-        "validity_minutes": settings.QR_TOKEN_EXPIRE_MINUTES
+        "validity_seconds": settings.QR_TOKEN_EXPIRE_SECONDS
     }
 
 @router.post("/me/correction-request")

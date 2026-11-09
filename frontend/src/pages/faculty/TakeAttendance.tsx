@@ -363,8 +363,6 @@ export const TakeAttendance: React.FC = () => {
                   <th className="py-3 px-6">Student Name</th>
                   <th className="py-3 px-6 text-center">Present</th>
                   <th className="py-3 px-6 text-center">Absent</th>
-                  <th className="py-3 px-6 text-center">Late</th>
-                  <th className="py-3 px-6 text-center">Excused</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-campus-border/60">
@@ -373,7 +371,7 @@ export const TakeAttendance: React.FC = () => {
                     <td className="py-3 px-6 font-bold text-campus-blue">{st.reg_number}</td>
                     <td className="py-3 px-6 font-semibold text-campus-navy">{st.name}</td>
 
-                    {/* Status Toggles */}
+                    {/* Status Toggles: Present & Absent */}
                     <td className="py-3 px-6 text-center">
                       <button
                         type="button"
@@ -399,34 +397,6 @@ export const TakeAttendance: React.FC = () => {
                         }`}
                       >
                         <XCircle className="w-4 h-4" />
-                      </button>
-                    </td>
-
-                    <td className="py-3 px-6 text-center">
-                      <button
-                        type="button"
-                        onClick={() => handleStatusChange(st.id, "late")}
-                        className={`w-7 h-7 rounded-lg inline-flex items-center justify-center transition ${
-                          st.status === "late"
-                            ? "bg-amber-500 text-white shadow-sm"
-                            : "bg-gray-100 text-gray-400 hover:bg-amber-100 hover:text-amber-600"
-                        }`}
-                      >
-                        <Clock className="w-4 h-4" />
-                      </button>
-                    </td>
-
-                    <td className="py-3 px-6 text-center">
-                      <button
-                        type="button"
-                        onClick={() => handleStatusChange(st.id, "excused")}
-                        className={`w-7 h-7 rounded-lg inline-flex items-center justify-center transition ${
-                          st.status === "excused"
-                            ? "bg-blue-500 text-white shadow-sm"
-                            : "bg-gray-100 text-gray-400 hover:bg-blue-100 hover:text-blue-600"
-                        }`}
-                      >
-                        <ShieldCheck className="w-4 h-4" />
                       </button>
                     </td>
                   </tr>

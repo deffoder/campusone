@@ -8,7 +8,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "campusone-super-secret-production-key-2024-change-in-prod-xyz987"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
-    QR_TOKEN_EXPIRE_MINUTES: int = 30  # 30 minutes for student attendance QR
+    QR_TOKEN_EXPIRE_MINUTES: int = 30  # backward compatibility
+    QR_TOKEN_EXPIRE_SECONDS: int = 10  # 10 seconds dynamic student attendance QR rotation
     
     # PostgreSQL Configuration
     POSTGRES_SERVER: str = "localhost"
