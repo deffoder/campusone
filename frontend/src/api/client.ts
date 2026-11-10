@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const envUrl = import.meta.env.VITE_API_BASE_URL;
 export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "https://campusone-ebtx.onrender.com/api";
+  envUrl && !envUrl.includes("5j0m") && !envUrl.includes("localhost") && !envUrl.includes("your-render")
+    ? envUrl
+    : "https://campusone-ebtx.onrender.com/api";
 
 export const BACKEND_SERVER_URL =
   API_BASE_URL.replace(/\/api\/?$/, "");
