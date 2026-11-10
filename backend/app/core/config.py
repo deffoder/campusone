@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     POSTGRES_PORT: str = "5432"
     
     DATABASE_URL: Optional[str] = None
+    DATABASE_URL_POOLED: Optional[str] = None
     
     # Uploads directory
     UPLOAD_DIR: str = "uploads"
@@ -26,10 +27,15 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"
 
     def get_database_url(self) -> str:
         if self.DATABASE_URL:
-            return self.DATABASE_URL
+            # SQLAlchemy prefers postgresql+psycopg2:// or postgresql://
+            url = self.DATABASE_URL
+            if url.startswith("postgresql://"):
+                url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
+            return url
         return f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
 
 settings = Settings()

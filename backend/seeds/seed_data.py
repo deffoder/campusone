@@ -2,18 +2,18 @@ import sys
 import os
 from datetime import datetime, timezone, date, time, timedelta
 
-# Add parent directory to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+# Add backend directory to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from backend.app.core.database import SessionLocal, engine, Base
-from backend.app.core.security import get_password_hash
-from backend.app.models.entities import (
+from app.core.database import SessionLocal, engine, Base
+from app.core.security import get_password_hash
+from app.models.entities import (
     User, UserRole, Department, Student, Faculty, Subject,
     Class, Enrollment, Timetable, AttendanceSession, AttendanceRecord,
     AttendanceStatus, CorrectionRequest, CorrectionStatus, EvidenceFile,
     Approval, ApprovalDecision, Notification, SessionMethod
 )
-from backend.app.utils.audit import record_audit_log
+from app.utils.audit import record_audit_log
 
 def seed():
     print("Beginning CampusOne database seeding...")
