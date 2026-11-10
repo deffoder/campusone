@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { adminApi, CorrectionRequestItem } from "../../api";
+import { BACKEND_SERVER_URL } from "../../api/client";
 import {
   CheckCircle2,
   XCircle,
@@ -130,7 +131,7 @@ export const Escalations: React.FC = () => {
                       req.evidence_files.map((file) => (
                         <a
                           key={file.id}
-                          href={`http://localhost:8000${file.filepath}`}
+                          href={`${BACKEND_SERVER_URL}${file.filepath}`}
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-2 px-3 py-1.5 bg-campus-light hover:bg-blue-50 border border-campus-border rounded-xl text-campus-blue font-semibold transition"

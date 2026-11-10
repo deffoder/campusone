@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { studentApi, CorrectionRequestItem } from "../../api";
-import { API_BASE_URL } from "../../api/client";
+import { API_BASE_URL, BACKEND_SERVER_URL } from "../../api/client";
 import {
   FileText,
   Clock,
@@ -140,7 +140,7 @@ export const CorrectionRequests: React.FC = () => {
                       req.evidence_files.map((file) => (
                         <a
                           key={file.id}
-                          href={`http://localhost:8000${file.filepath}`}
+                          href={`${BACKEND_SERVER_URL}${file.filepath}`}
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-2 px-3 py-1.5 bg-campus-light hover:bg-blue-50 border border-campus-border rounded-xl text-campus-blue font-semibold transition"
